@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing & Web Development Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0A0A0A;
+    --white: #F5F4F0;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gray: #1A1A1A;
+    --gray-mid: #2E2E2E;
+    --gray-text: #888;
+    --red: #E63946;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 6%;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray-text); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--black);
+    padding: 0.55rem 1.4rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.8rem;
+    text-decoration: none; letter-spacing: 0.5px;
+    text-transform: uppercase; transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 6% 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow span {
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -2px; margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--gray-text);
+    max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    padding: 0.85rem 2rem; border-radius: 4px;
+    font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-secondary {
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); padding: 0.85rem 2rem;
+    border-radius: 4px; font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; transition: border-color 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--gray);
+    border-top: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+    padding: 2rem 6%;
+    display: flex; justify-content: space-around;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem; font-weight: 800;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--gray-text);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 6%; }
+
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800; letter-spacing: -1px;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--gray-text); font-size: 1rem;
+    line-height: 1.7; max-width: 560px;
+  }
+
+  /* SERVICES */
+  .services { background: var(--gray); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px; margin-top: 3.5rem;
+    border: 1.5px solid var(--gray-mid);
+  }
+  .service-card {
+    background: var(--black); padding: 2.5rem;
+    border: 1.5px solid var(--gray-mid);
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .service-card:hover { border-color: var(--gold); }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    font-size: 2rem; margin-bottom: 1.2rem; display: block;
+  }
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 0.8rem; letter-spacing: -0.3px;
+  }
+  .service-card p {
+    color: var(--gray-text); font-size: 0.88rem;
+    line-height: 1.65;
+  }
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+  .tag {
+    background: var(--gray-mid); color: var(--gray-text);
+    font-size: 0.7rem; padding: 0.25rem 0.7rem;
+    border-radius: 2px; letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  /* MARKETS */
+  .markets-row {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    margin-top: 3.5rem;
+  }
+  .market-card {
+    flex: 1; min-width: 220px;
+    border: 1px solid var(--gray-mid);
+    padding: 2rem; border-radius: 2px;
+    text-align: center; transition: border-color 0.3s;
+  }
+  .market-card:hover { border-color: var(--gold); }
+  .market-flag { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
+  .market-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .market-card p { color: var(--gray-text); font-size: 0.82rem; line-height: 1.5; }
+
+  /* PROJECTS */
+  .projects { background: var(--gray); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .project-card {
+    background: var(--black);
+    border: 1px solid var(--gray-mid);
+    overflow: hidden; transition: border-color 0.3s;
+  }
+  .project-card:hover { border-color: var(--gold); }
+  .project-thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; position: relative;
+  }
+  .project-thumb.re { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+  .project-thumb.shopify { background: linear-gradient(135deg, #1a2e1a 0%, #0d4a0d 100%); }
+  .project-thumb.ads { background: linear-gradient(135deg, #2e1a1a 0%, #4a0d0d 100%); }
+  .project-body { padding: 1.8rem; }
+  .project-cat {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.6rem;
+  }
+  .project-body h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 0.6rem; letter-spacing: -0.3px;
+  }
+  .project-body p { color: var(--gray-text); font-size: 0.85rem; line-height: 1.6; }
+  .project-result {
+    margin-top: 1.2rem; padding: 0.8rem;
+    background: rgba(201,168,76,0.08);
+    border-left: 2px solid var(--gold);
+    font-size: 0.82rem; color: var(--white);
+  }
+
+  /* TOOLS */
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin-top: 3rem;
+  }
+  .tool-pill {
+    display: flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--gray-mid);
+    padding: 0.7rem 1.2rem; border-radius: 3px;
+    font-size: 0.85rem; font-weight: 500;
+    transition: border-color 0.3s, color 0.3s;
+    cursor: default;
+  }
+  .tool-pill:hover { border-color: var(--gold); color: var(--gold); }
+  .tool-pill span { font-size: 1.1rem; }
+
+  /* PROCESS */
+  .process { background: var(--gray); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0; margin-top: 3.5rem;
+    position: relative;
+  }
+  .process-step {
+    padding: 2rem; border: 1px solid var(--gray-mid);
+    position: relative;
+  }
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem; font-weight: 800;
+    color: rgba(201,168,76,0.15); line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .process-step h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    margin-bottom: 0.5rem; letter-spacing: -0.2px;
+  }
+  .process-step p { color: var(--gray-text); font-size: 0.82rem; line-height: 1.6; }
+
+  /* CTA */
+  .cta-section {
+    text-align: center; padding: 7rem 6%;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800; letter-spacing: -1.5px;
+    margin-bottom: 1rem; line-height: 1.05;
+  }
+  .cta-section p {
+    color: var(--gray-text); font-size: 1rem;
+    margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* CONTACT CHIPS */
+  .contact-chips {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    justify-content: center; margin-top: 2.5rem;
+  }
+  .chip {
+    display: flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--gray-mid);
+    padding: 0.6rem 1.2rem; border-radius: 50px;
+    font-size: 0.82rem; color: var(--gray-text);
+    text-decoration: none; transition: border-color 0.3s, color 0.3s;
+  }
+  .chip:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-mid);
+    padding: 2rem 6%;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { color: var(--gray-text); font-size: 0.82rem; }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; color: var(--gold); font-size: 1rem;
+  }
+
+  /* AVAILABLE BADGE */
+  .available-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+    color: #22c55e; padding: 0.4rem 1rem;
+    border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.5px; margin-bottom: 1.5rem;
+  }
+  .available-badge::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 4%; }
+    .nav-links { display: none; }
+    section { padding: 4rem 4%; }
+    .hero { padding: 7rem 4% 3rem; }
+    .stats-bar { padding: 1.5rem 4%; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Haseeb Afzal.</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="available-badge">Available for New Projects</div>
+  <div class="hero-eyebrow"><span></span> Digital Marketing & Web Development</div>
+  <h1>I Build Stores.<br>I Run Ads.<br>I Drive <em>Results.</em></h1>
+  <p class="hero-sub">3+ years delivering Shopify stores, high-converting websites, and performance-driven ad campaigns across Pakistan, UK, and Saudi Arabia.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-secondary">Let's Talk</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">3+</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Projects Delivered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Countries Served</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-eyebrow">What I Do</div>
+  <h2 class="section-title">Services That<br>Deliver ROI</h2>
+  <p class="section-desc">From building your digital storefront to scaling it with paid ads — I handle the full funnel.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🛒</span>
+      <h3>Shopify Store Development</h3>
+      <p>Custom Shopify stores built for conversion — from product setup to checkout optimization. Dropshipping & branded stores.</p>
+      <div class="service-tags">
+        <span class="tag">Shopify</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Dropshipping</span>
+        <span class="tag">UI/UX</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <h3>Website Development</h3>
+      <p>Professional websites for businesses — real estate, agencies, service providers. Fast, mobile-first, and SEO-ready.</p>
+      <div class="service-tags">
+        <span class="tag">WordPress</span>
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">Real Estate</span>
+        <span class="tag">Landing Pages</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📱</span>
+      <h3>Meta Ads (Facebook & Instagram)</h3>
+      <p>Data-driven Meta ad campaigns — audience research, creative strategy, A/B testing, and ROAS optimization.</p>
+      <div class="service-tags">
+        <span class="tag">Facebook Ads</span>
+        <span class="tag">Instagram Ads</span>
+        <span class="tag">Retargeting</span>
+        <span class="tag">Lead Gen</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎵</span>
+      <h3>TikTok Ads</h3>
+      <p>Scroll-stopping TikTok campaigns targeting younger audiences. Creative-first approach for maximum reach and conversions.</p>
+      <div class="service-tags">
+        <span class="tag">TikTok Ads</span>
+        <span class="tag">UGC Strategy</span>
+        <span class="tag">Spark Ads</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔍</span>
+      <h3>Google Ads</h3>
+      <p>Search, Display & Shopping campaigns that capture high-intent buyers. Full campaign setup, management & reporting.</p>
+      <div class="service-tags">
+        <span class="tag">Search Ads</span>
+        <span class="tag">Shopping Ads</span>
+        <span class="tag">Display</span>
+        <span class="tag">PPC</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📊</span>
+      <h3>Digital Marketing Strategy</h3>
+      <p>Full-funnel digital strategy — organic + paid, content planning, competitor analysis, and growth roadmaps.</p>
+      <div class="service-tags">
+        <span class="tag">SEO</span>
+        <span class="tag">Content Strategy</span>
+        <span class="tag">Analytics</span>
+        <span class="tag">Funnels</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-eyebrow">Market Experience</div>
+  <h2 class="section-title">I've Worked Across<br>3 Markets</h2>
+  <div class="markets-row">
+    <div class="market-card">
+      <span class="market-flag">🇵🇰</span>
+      <h3>Pakistan</h3>
+      <p>Local businesses, real estate firms, and e-commerce brands. Urdu + English campaigns.</p>
+    </div>
+    <div class="market-card">
+      <span class="market-flag">🇬🇧</span>
+      <h3>United Kingdom</h3>
+      <p>Shopify stores and digital marketing for UK-based clients. GBP campaigns with UK audience targeting.</p>
+    </div>
+    <div class="market-card">
+      <span class="market-flag">🇸🇦</span>
+      <h3>Saudi Arabia</h3>
+      <p>E-commerce and service businesses in KSA. Arabic market understanding with strong ad performance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-eyebrow">Portfolio</div>
+  <h2 class="section-title">Recent Work</h2>
+  <p class="section-desc">Real projects. Real results. Here's a snapshot of what I've delivered.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb re">🏢</div>
+      <div class="project-body">
+        <div class="project-cat">Real Estate · Web + Meta Ads</div>
+        <h3>Real Estate Website & Lead Campaign</h3>
+        <p>Full property listing website with Meta Ads lead generation campaign. Currently live and running.</p>
+        <div class="project-result">📍 Live Project — Meta Ads actively running</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb shopify">🛒</div>
+      <div class="project-body">
+        <div class="project-cat">E-commerce · Shopify · UK Market</div>
+        <h3>Shopify Store — UK Client</h3>
+        <p>Complete Shopify store setup with product listings, payment gateway, and ad-ready landing pages for the UK market.</p>
+        <div class="project-result">✅ Delivered — UK-based client</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb ads">📱</div>
+      <div class="project-body">
+        <div class="project-cat">Digital Marketing · KSA Market</div>
+        <h3>Meta & TikTok Ads — Saudi Arabia</h3>
+        <p>Multi-platform ad campaign for a KSA-based business. Audience research, creative strategy, and campaign optimization.</p>
+        <div class="project-result">✅ Delivered — Saudi Arabia client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-eyebrow">Tech Stack</div>
+  <h2 class="section-title">Tools I Work With</h2>
+  <div class="tools-grid">
+    <div class="tool-pill"><span>🛒</span> Shopify</div>
+    <div class="tool-pill"><span>📘</span> Meta Ads Manager</div>
+    <div class="tool-pill"><span>🎵</span> TikTok Ads</div>
+    <div class="tool-pill"><span>🔍</span> Google Ads</div>
+    <div class="tool-pill"><span>📊</span> Google Analytics</div>
+    <div class="tool-pill"><span>🔥</span> Meta Pixel</div>
+    <div class="tool-pill"><span>🌐</span> WordPress</div>
+    <div class="tool-pill"><span>🎨</span> Canva / Figma</div>
+    <div class="tool-pill"><span>📧</span> Email Marketing</div>
+    <div class="tool-pill"><span>📈</span> SEO Tools</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-eyebrow">How I Work</div>
+  <h2 class="section-title">My Process</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>I learn your business goals, target audience, and what success looks like for you.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3>Strategy & Plan</h3>
+      <p>Custom roadmap — what to build, which platforms to target, and projected outcomes.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3>Build & Launch</h3>
+      <p>Fast execution. Website or store built and ads live within the agreed timeline.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3>Optimize & Scale</h3>
+      <p>Data-driven optimization — cut what doesn't work, scale what does. Weekly reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>Ready to Grow<br>Your Business?</h2>
+  <p>Whether you need a Shopify store, a website, or ad campaigns — let's build something that actually works.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/923396181804" class="btn-primary">💬 WhatsApp Me</a>
+    <a href="mailto:info.mr.haseebafzal@gmail.com" class="btn-secondary">✉️ Send Email</a>
+  </div>
+  <div class="contact-chips">
+    <a href="#" class="chip">🔗 Fiverr Profile</a>
+    <a href="#" class="chip">💼 LinkedIn</a>
+    <a href="#" class="chip">📸 Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Haseeb Afzal.</div>
+  <p>© 2025 Haseeb Afzal · Digital Marketing & Web Development · PK · UK · KSA</p>
+  <p style="color: var(--gold); font-size: 0.78rem;">Available for projects</p>
+</footer>
+
+</body>
+</html>
